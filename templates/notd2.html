@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% block title %}
+    NOTD
+{% end %}
+{% block head %}
+{% end %}
+{% block navbar %}
+<center>
+    <div id="equipment">
+        <ul class="nav nav-pills">
+        {% for eq in player.equipment %}
+        <li class="eq aitem" id="eq{{ player.equipment.index(eq) }}">
+            <img src="{{ static_url('images/Unarmed.png') }}"/>
+        </li>
+        {% end %}
+        {% if len(player.equipment) < 6 %}
+            {% for i in range(6 - len(player.equipment)) %}
+            <li class="eq" id="eq{{ i + len(player.equipment) }}">
+            </li>
+            {% end %}
+        {% end %}
+        </ul>
+    </div>
+</center>
+    <div id="player-{{ player.uid }}">
+        <h4 id="name" class="scorel">{{ player.name  }}</h4>
+        <h4 id="exp" class="scorel">XP: {{ player.experience }}</h4>
+        <h4 id="health" class="scorer">HP: {{ player.cur_hp }}</h4>
+        <h4 id="energy" class="scorer">EN: {{ player.cur_energy }}</h4>
+    </div>
+{% end %}
+{% block content %}
+{% end %}
+{% block derp %}
+<div class="board" style="width:{{board.pixel_w}}px;height:{{board.pixel_h}}px;">
+<center>
+{% for i, row in enumerate(board.rows) %}
+    {% if i%2 == 0  %}
+        <div class="hex-row">
+    {% else %}
+        <div class="hex-row even">
+    {% end %}
+    {% for j, field in enumerate(row) %}
+        <div class="hex Grass" id={{str(field.x) + "x" + str(field.y)}}>
+            <div class="top">
+            </div>
+            <div class="middle">
+                {{str(field.x) + "x" + str(field.y)}}
+            </div>
+            <div class="bottom">
+            </div>
+        </div>
+    {% end %}
+        </div>
+{% end %}
+</center>
+</div>
+<div id="spacer">
+</div>
+<div id="chatbox">
+    <div id="chat">
+    </div>
+    <form action="javascript:chat('asdfasfdsdfasdf')">
+    <input id="chatin" placeholder=">" type="text"/>
+    </form>
+</div>
+{% end %}
+{% block footer %}
+<script type="text/javascript">
+</script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+    var playa = "{{ player.uid }}"
+    var p = ['<img class="f0" src="{{ static_url('images/player.png') }}""/>',
+            '<img class="f1" src="{{ static_url('images/player.png') }}"/>',
+            '<img class="f2" src="{{ static_url('images/player.png') }}"/>',
+            '<img class="f3" src="{{ static_url('images/player.png') }}"/>',
+            '<img class="f4" src="{{ static_url('images/player.png') }}"/>',
+            '<img class="f5" src="{{ static_url('images/player.png') }}"/>']
+    var zombie = "{{ static_url('images/Zombie.gif') }}" 
+
+    items = {
+    'Unarmed':"{{ static_url('images/Unarmed.png') }}" ,
+    'Bat':"{{ static_url('images/Bat.png') }}" ,
+    'Beans':"{{ static_url('images/Beans.png') }}" ,
+    'Sword':"{{ static_url('images/Sword.png') }}" };
+
+    $(document).keypress(function(event) {
+        if ( event.which == 49 ) {
+            var key = '1'
+            $('.aitem').removeClass('aitem');
+            $('#eq0').addClass('aitem')
+        }
+        if ( event.which == 50 ) {
+            var key = '2'
+            $('.aitem').removeClass('aitem');
+            $('#eq1').addClass('aitem')
+        }
+        if ( event.which == 51 ) {
+            var key = '3'
+            $('.aitem').removeClass('aitem');
+            $('#eq2').addClass('aitem')
+        }
+        if ( event.which == 52 ) {
+            var key = '4'
+            $('.aitem').removeClass('aitem');
+            $('#eq3').addClass('aitem')
+        }
+        if ( event.which == 53 ) {
+            var key = '5'
+            $('.aitem').removeClass('aitem');
+            $('#eq4').addClass('aitem')
+        }
+        if ( event.which == 54 ) {
+            var key = '6'
+            $('.aitem').removeClass('aitem');
+            $('#eq5').addClass('aitem')
+        }
+        if ( event.which == 119 ) {
+            var key = 'w'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 97 ) {
+            var key = 'a'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 115 ) {
+            var key = 's'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 100 ) {
+            var key = 'd'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 101 ) {
+            var key = 'e'
+            var item = $('.aitem').attr('id')
+            ws.send(JSON.stringify({key:key,room:'{{room}}',item:item}));
+        }
+        if ( event.which == 113 ) {
+            var key = 'q'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 122 ) {
+            var key = 'z'
+            ws.send(JSON.stringify({key:key,room:'{{room}}'}));
+        }
+        if ( event.which == 120 ) {
+            var key = 'x'
+            var item = $('.aitem').attr('id')
+            ws.send(JSON.stringify({key:key,room:'{{room}}',item:item}));
+        }
+        if ( event.which == 32 ) {
+            event.preventDefault();
+            var key = 'space'
+            var item = $('.aitem').attr('id')
+            ws.send(JSON.stringify({key:key,room:'{{room}}',item:item}));
+        }
+        console.log( event.which );
+    });
+
+    {% for p in board.players %}
+        $("#{{p.coords[0]}}x{{p.coords[1]}} .middle").html('<div class="pc" id="{{p.uid}}">' + p[{{p.facing}}] + '</div>');
+    {% end %}
+
+    {% for npc in board.npcs %}
+        $("#{{npc.coords[0]}}x{{npc.coords[1]}} .middle").html('<div class="npc" id="{{npc.uid}}"><img src="' + zombie + '"/></div>');
+    {% end %}
+
+    var ws = new WebSocket("ws://" + location.host + "/ws/");
+    ws.onopen = function() {
+        ws.send(JSON.stringify({open:'{{room}}'}));
+    };
+    ws.onmessage = function (evt) {
+        msg = JSON.parse(evt.data);
+        if (msg.text != null){
+            var text = msg.text;
+            var ps = $("#chat > .msg").size();
+            if (ps > 2){
+                $('#chat .msg:first-child').remove();
+                $('#chat').html($('#chat').html() + text);
+            }
+            else {
+                $('#chat').html($('#chat').html() + text);
+            }
+        }
+        if (msg.pcs != null){
+            var pcs = msg.pcs;
+            $('.hex').removeClass('active');
+            $('.pc').remove()
+            for (var i=0;i<pcs.length;i++){
+                console.log(pcs[i])
+                if (String(pcs[i].uid) === playa){
+                    var player = pcs[i]
+                    $('#player-' + player.uid + " #health").html("HP: " + player.health);
+                    $('#player-' + player.uid + " #energy").html("EN: " + player.energy);
+                    $('#player-' + player.uid + " #exp").html("XP: " + player.xp);
+                    $('.eq').html("")
+                    for (var j=0;j<player.eq.length;j++){
+                        $('#eq' + j).html('<img src="' + items[player.eq[j].name] + '"/>')
+                    }   
+                }
+                var inner = '<div class="pc" id="' + pcs[i].uid + '">' + p[pcs[i].facing] + '</div>';
+                $("#" + pcs[i].x + "x" + pcs[i].y + " .middle").append(inner);
+                var fov = pcs[i].fov
+                $('.item').remove()
+                for (var j=0;j<fov.length;j++){
+                    $('#' + fov[j].x + 'x' + fov[j].y).addClass('active');
+                    $('#' + fov[j].x + 'x' + fov[j].y + ' .middle').addClass(fov[j].type);
+                    if (fov[j].item != null){
+                        console.log(fov[j].item)
+                        $('#' + fov[j].x + 'x' + fov[j].y + ' .middle').append('<img class="item" src="' + items[fov[j].item.name] + '"/>');
+                    }
+                }
+            }
+        }
+        if (msg.npcs.length === 0){
+            $('.npc').remove()
+        }
+        if (msg.npcs != null){
+            $('.npc').remove()
+            var npcs = msg.npcs
+            for (var i=0;i<npcs.length;i++){
+                var tile = $("#" + npcs[i].x + "x" + npcs[i].y);
+                if (tile.hasClass('active')){
+                    var tile = $("#" + npcs[i].x + "x" + npcs[i].y + " .middle");
+                    tile.append('<div class="npc" id="' + npcs[i].uid + '"><img src="' + zombie + '"/></div>');
+                }
+            }
+        }
+        if (msg.move != null){
+        }
+    };
+    ws.onclose = function() {
+        ws.send(JSON.stringify({close:'{{room}}'}));
+    };
+    
+    function chat(message) {
+        var msg = $.trim($('#chatin').val());
+        $('#chatin').val("");
+        if (msg != ""){
+            ws.send(JSON.stringify({chat:msg,room:'{{room}}'}));
+        }
+    };
+</script>
+{% end %}

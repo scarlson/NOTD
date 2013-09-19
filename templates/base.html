@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>{% block title %}Sekretz, shh{% end %}</title>
+    <meta name="author" content="Castle Black LLC">
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Google Fonts
+  ================================================== -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">    
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="{{ static_url('css/bootstrap.css') }}"> 
+    <link rel="stylesheet" href="{{ static_url('css/bootstrap-responsive.css') }}"> 
+    <link rel="stylesheet" href="{{ static_url('css/custom.css') }}"> 
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{{ static_url('images/favicon.ico') }}">
+    {% block head %}{% end %}
+</head>
+<body >
+
+    <!-- Primary Page Layout
+    ================================================== -->
+    <div id="wrap">
+        <div class="navbar navbar-fixed-top">
+            {% block navbar %}{% end %}  
+        </div>
+        {% block derp %}{% end %}
+    </div>
+    
+
+<!-- JS
+================================================== -->
+    <script src="{{ static_url('js/jquery.js') }}"></script>
+    {% block footer %}{% end %}
+<!-- End Document
+================================================== -->
+</body>
+</html>

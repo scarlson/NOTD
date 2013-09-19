@@ -1,0 +1,50 @@
+.navbar {position:fixed;height:40px;background-color: RGBA(0,0,0,.85);
+-moz-box-shadow: 0px 0px 5px #333;
+-webkit-box-shadow: 0px 0px 5px #333;
+box-shadow: 0px 0px 5px #333;}
+.navbar center {margin:0 0 -40px;height:40px;}
+.navbar center h3 {font-size:32px;margin:0;width:100px;color:white;}
+#gg {height:30px;padding-top:10px;margin:0;width:200px;color:white;background-color:#6C6;}
+#gg a {font-weight:bold;font-size:24px;color:white;text-decoration:none;}
+#gg a:hover {text-decoration:none;color:whitesmoke;}
+.container {padding-bottom:30px;}
+.board {width:100%;margin:-20px auto 0;padding:0 20px 10px;}
+.middle h4 {
+margin: 0;
+padding-top: 5px;
+font-size: 32px;
+color: white;
+}
+
+.r4, .r6 {margin-left:28px;}
+.r3, .r7 {margin-left:55px;} 
+.r2, .r8 {margin-left:82px;}
+.r1, .r9 {margin-left:110px;}
+.r0, .r10 {margin-left:138px;}
+.dead {padding:26px;}
+.board center {margin-left:-3px;}
+
+#content {margin-top:60px;}
+
+.hex {
+    float: left;
+    margin-left: 3px;
+    margin-bottom: -13px;
+}
+.hex .top {
+    width: 0;
+    border-bottom: 15px solid #6C6;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+}
+.hex .middle {
+    width: 52px;
+    height: 30px;
+    background: #6C6;
+}
+.hex .bottom {
+    width: 0;
+    border-top: 15px solid #6C6;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+}

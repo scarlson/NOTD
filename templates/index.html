@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block navbar%}
+    <p>DERP DERP HERP</p>
+{% end %}
+{% block derp %}
+    <form action="/" method="post">
+        <fieldset>
+            <legend>Night of the Dead</legend>
+            <input type="hidden" name="game" value="notd"/>
+            <input type="hidden" name="height" placeholder="height"/>
+            <input type="hidden" name="width" placeholder="width"/>
+            <button type="submit" class="btn">Make Game</button>
+        </fieldset>
+    </form>
+{% end %}
+{% block footer %}
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+{% end %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}
+    NOTD
+{% end %}
+{% block head %}
+{% end %}
+{% block navbar %}
+<center>
+    <div id="equipment">
+        <ul class="nav nav-pills">
+        {% for eq in player.equipment %}
+        <li class="eq aitem" id="eq{{ player.equipment.index(eq) }}">
+            <img src="{{ static_url('images/Unarmed.png') }}"/>
+        </li>
+        {% end %}
+        {% if len(player.equipment) < 6 %}
+            {% for i in range(6 - len(player.equipment)) %}
+            <li class="eq" id="eq{{ i + len(player.equipment) }}">
+            </li>
+            {% end %}
+        {% end %}
+        </ul>
+    </div>
+</center>
+    <div id="player-{{ player.uid }}">
+        <h4 id="name" class="scorel">{{ player.name  }}</h4>
+        <h4 id="exp" class="scorer">XP: {{ player.experience }}</h4>
+        <h4 id="health" class="scorer">HP: {{ player.cur_hp }}</h4>
+    </div>
+{% end %}
+{% block content %}
+{% end %}
+{% block derp %}
+<center>
+<canvas id="board" style="margin-top:-20px;">
+No canvas found! 
+</canvas>
+</center>
+<div id="chatbox">
+    <div id="chat">
+    </div>
+    <form action="javascript:chat('asdfasfdsdfasdf')">
+    <input id="chatin" placeholder=">" type="text"/>
+    </form>
+</div>
+<div id="settings">
+    <a href="#settings-modal" role="button" data-toggle="modal">
+        <i class="icon-cog icon-white"></i>
+    </a>
+    <!-- Modal -->
+    <div id="settings-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-header">
+             <h3 id="modalheader">Settings</h3>
+         </div>
+         <div class="modal-body">
+            <label class="checkbox">
+              <input id="mute" type="checkbox"> Mute Audio
+            </label>
+         </div>
+         <div class="modal-footer">
+             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+         </div>
+    </div>
+</div>
+{% end %}
+{% block footer %}
+<audio id="bga" src="{{ static_url('audio/Aftermath.mp3') }}" preload="auto" autoplay loop/>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script src="{{ static_url('js/bootstrap-modal.js') }}"></script>
+<script type="text/javascript">
+    var playa = "{{ player.uid }}"
+    var room = "{{ room }}"
+
+    var bga = document.getElementById("bga");
+    $("#mute").click(function(){
+        if (bga.paused) {
+           bga.play();
+           $('#mute').attr("checked", false);
+        }   
+        else {
+           bga.pause();
+           $('#mute').attr("checked", true);
+        }
+    });
+</script>
+<script src="{{ static_url('js/notd.js') }}"></script>
+{% end %}

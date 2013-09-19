@@ -1,0 +1,176 @@
+html {background-color:#0A0A0A;}
+body {background:none;}
+.r4, .r6 {margin-left:28px;}
+.r3, .r7 {margin-left:55px;} 
+.r2, .r8 {margin-left:82px;}
+.r1, .r9 {margin-left:110px;}
+.r0, .r10 {margin-left:138px;}
+#equipment {width:320px; margin:3px auto 0;}
+#equipment ul {float:none;}
+#equipment ul li {
+    margin: 0 5px;
+    border: 2px solid #430;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #642;
+}
+#equipment img {
+    max-width: 32px;
+    max-height: 32px;
+}
+.f0 {
+    transform: rotate(210deg);
+   -moz-transform: rotate(210deg);
+   -webkit-transform: rotate(210deg);
+}
+.f1 {
+    transform: rotate(270deg);
+   -moz-transform: rotate(270deg);
+   -webkit-transform: rotate(270deg);
+}
+.f2 {
+    transform: rotate(330deg);
+   -moz-transform: rotate(330deg);
+   -webkit-transform: rotate(330deg);
+}
+.f3 {
+    transform: rotate(30deg);
+   -moz-transform: rotate(30deg);
+   -webkit-transform: rotate(30deg);
+}
+.f4 {
+    transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -webkit-transform: rotate(90deg);
+}
+.f5 {
+    transform: rotate(150deg);
+   -moz-transform: rotate(150deg);
+   -webkit-transform: rotate(150deg);
+}
+
+.middle {color:#F8F8F8;}
+.middle p{color:#F8F8F8;}
+#chatbox{
+max-height: 85px;
+background-color: rgba(0,0,0,.85);
+z-index: 100;
+position: fixed;
+bottom: 0;
+width: 100%;
+color: #F8F8F8;
+overflow-x: hidden;
+overflow-y: hidden;
+-moz-box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+-webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+}
+#chatin {
+margin-left:100px;
+width: 80%;
+background-color: none;
+background: none;
+border: none;
+padding: 0 30px;
+margin: 0;
+color: #F8F8F8;
+font-family:"Open Sans"
+}
+#chatin:focus {
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+#chatbox form {
+margin:0;
+padding:0;
+margin-left:80px;
+}
+#settings{
+position: fixed;
+bottom: 10px;
+right: 10px;
+z-index:1050;
+}
+#settings > a{padding:5px;}
+.icon-white{
+    background-image: url("/static/images/glyphicons-halflings-white.png");
+}
+a:hover {text-decoration:none;}
+#chat {padding-top:5px;}
+#chat p {padding:0px 20px;margin:0;font-family:"Open Sans";}
+#chat .player span{padding:0;margin:0}
+#chat .text{overflow:hidden;max-height:20px;}
+#chat span {padding: 0 10px;margin:0;}
+#spacer  {width:100%;height:80px;}
+.pc {position:absolute;z-index:10;top:-5px;}
+.board center {margin-left:-3px;}
+.player {float:left;margin-left:30px;;text-align:center;min-width:70px;}
+.navbar {position:fixed;height:40px;background-color: RGBA(0,0,0,.85);
+-moz-box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+-webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+box-shadow: 0px 0px 3px rgba(0,0,0,.25);
+}
+.item{
+max-width: 32px;
+max-height: 32px;
+position: absolute;
+left: 10px;
+z-index:5;
+border:2px solid #66C;
+background-color:rgba(0,0,0,.25);
+}
+.npc {position:absolute;z-index:10;}
+.npc img {max-width: 50px;
+max-height: 50px;
+margin-top: -20px;}
+.navbar center {margin:0 0 -40px;height:40px;}
+.navbar center h3 {font-size:32px;margin:0;width:100px;color:white;}
+.container {padding-bottom:0px;}
+.board {position:relative;width:100%;margin:-20px auto 0;padding:30px 20px 80px;}
+.middle h4 {
+margin: 0;
+padding-top: 5px;
+font-size: 32px;
+color: white;
+}
+html, body {height: 100%;}
+body > #wrap {height:auto; min-height: 100%;}
+#content {margin-top:60px;}
+.aitem {border-color:#963 !important;}
+.hex {
+    float: left;
+    margin-left: 3px;
+    margin-bottom: -13px;
+}
+.hex .top {
+    width: 0;
+    border-bottom: 15px solid transparent;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+}
+.hex .middle {
+    position:relative;
+    width: 52px;
+    height: 30px;
+    background: transparent;
+}
+.hex .bottom {
+    width: 0;
+    border-top: 15px solid transparent;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+}
+.hex-row {
+    clear: left;
+}
+.hex-row.even {
+    margin-left: 27px;
+}
+.navbar h4 {font-size:24px;}
+.scorel {float:left;margin:10px 0 0 40px;}
+.scorer {float:right;margin:10px 40px 0 0;}
+.Grass {background-image:url('http://dl.dropbox.com/u/2776371/Grass.png');background-size: 52px;background-repeat: no-repeat;}
+.Tree {background-image:url('http://dl.dropbox.com/u/2776371/trees.png') !important;background-position: 619px 171px !important;}
+.Rock {background-image:url('http://dl.dropbox.com/u/2776371/rocks.png') !important; background-position: -1px 550px !important;}
